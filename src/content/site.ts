@@ -3,10 +3,10 @@
 // Veja docs/estudos/passo-a-passo/02-home.md (fora deste repositório, na pasta do projeto).
 
 export const navegacao = [
+  { rotulo: "Quem somos", href: "#quem-somos" },
   { rotulo: "Serviços", href: "#servicos" },
   { rotulo: "Projetos", href: "#projetos" },
   { rotulo: "Planos", href: "#planos" },
-  { rotulo: "Quem somos", href: "#quem-somos" },
   { rotulo: "Contato", href: "#contato" },
 ];
 
