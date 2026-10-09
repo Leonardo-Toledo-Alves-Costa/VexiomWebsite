@@ -1,9 +1,12 @@
 .hero {
-  padding-block: clamp(48px, 8vw, 96px);
+  position: relative; /* referência para o canvas do campo vetorial */
+  overflow: hidden;
+  padding-block: clamp(56px, 9vw, 120px);
 }
 
 /* Duas colunas no desktop; no celular vira uma coluna só (ver media query) */
 .conteudo {
+  position: relative; /* fica acima do campo vetorial */
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   align-items: center;
@@ -35,11 +38,6 @@
   color: var(--texto);
 }
 
-.grade {
-  stroke: var(--linha);
-  stroke-width: 1;
-}
-
 .construcao {
   /* azul da marca clareado: puro, ele some sobre o grafite */
   stroke: color-mix(in srgb, var(--azul) 70%, var(--texto));
@@ -68,10 +66,6 @@
    laranja entra por último. stroke-dasharray/dashoffset é o truque clássico:
    um traço do tamanho do contorno inteiro que "desliza" até cobrir tudo. */
 @media (prefers-reduced-motion: no-preference) {
-  .grade {
-    animation: aparece 900ms ease both;
-  }
-
   .construcao {
     animation: aparece 900ms ease 500ms both;
   }
@@ -112,16 +106,17 @@
     animation: sobe 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
 
-  .texto > *:nth-child(2) {
-    animation-delay: 80ms;
+  /* o título tem a própria animação, palavra por palavra (TituloRevelado) */
+  .texto > .titulo {
+    animation: none;
   }
 
   .texto > *:nth-child(3) {
-    animation-delay: 160ms;
+    animation-delay: 550ms;
   }
 
   .texto > *:nth-child(4) {
-    animation-delay: 240ms;
+    animation-delay: 680ms;
   }
 }
 

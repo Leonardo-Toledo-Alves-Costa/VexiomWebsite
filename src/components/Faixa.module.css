@@ -1,0 +1,54 @@
+.faixa {
+  overflow: hidden;
+  border-top: 1px solid var(--linha);
+  padding-block: 22px;
+  /* as pontas somem aos poucos em vez de cortar o texto */
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+}
+
+.trilho {
+  display: flex;
+  width: max-content;
+}
+
+.lista {
+  display: flex;
+  flex: none;
+}
+
+.lista li {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding-right: 40px;
+  font-family: var(--fonte-titulo), system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--texto-suave);
+}
+
+/* quadradinho laranja entre os nomes, como o pingo do "i" da logo */
+.lista li::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--acento);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .trilho {
+    animation: corre 32s linear infinite;
+  }
+
+  .faixa:hover .trilho {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes corre {
+  to {
+    /* metade do trilho = uma cópia inteira da lista */
+    transform: translateX(-50%);
+  }
+}

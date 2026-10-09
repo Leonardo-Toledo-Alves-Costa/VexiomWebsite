@@ -1,8 +1,13 @@
 // Primeira dobra do site: promessa, texto de apoio, dois botões e o símbolo
-// da Vexiom desenhado em linhas (como uma planta técnica) sobre uma grade.
+// da Vexiom desenhado em linhas (como uma planta técnica), sobre um campo de
+// vetores que reage ao cursor.
 import { hero } from "@/content/site";
 import { Botao } from "./Botao";
 import styles from "./Hero.module.css";
+import { CampoVetorial } from "./movimento/CampoVetorial";
+import { Magnetico } from "./movimento/Magnetico";
+import { Paralaxe } from "./movimento/Paralaxe";
+import { TituloRevelado } from "./movimento/TituloRevelado";
 
 // As cinco barras do símbolo, nas coordenadas do SVG original da marca.
 const barras = (
@@ -25,21 +30,8 @@ const barras = (
 const ENCAIXE = "translate(40 128) scale(1.29) translate(-654.29 -19.45)";
 
 function SimboloEmLinhas() {
-  // grade de 70 em 70 px
-  const verticais = Array.from({ length: 9 }, (_, i) => i * 70);
-  const horizontais = Array.from({ length: 8 }, (_, i) => i * 70);
-
   return (
     <svg className={styles.grafico} viewBox="0 0 560 490" fill="none" aria-hidden="true">
-      <g className={styles.grade}>
-        {verticais.map((x) => (
-          <line key={`v${x}`} x1={x} y1="0" x2={x} y2="490" />
-        ))}
-        {horizontais.map((y) => (
-          <line key={`h${y}`} x1="0" y1={y} x2="560" y2={y} />
-        ))}
-      </g>
-
       {/* linhas de construção: as barras inteiras, antes do corte, e as duas
           retas horizontais que marcam onde o símbolo é cortado */}
       <g className={styles.construcao}>
@@ -97,19 +89,26 @@ function SimboloEmLinhas() {
 export function Hero() {
   return (
     <section id="topo" className={styles.hero}>
+      <CampoVetorial />
       <div className={`container ${styles.conteudo}`}>
         <div className={styles.texto}>
           <p className="rotulo rotulo-traco">{hero.rotulo}</p>
-          <h1 className="display">{hero.titulo}</h1>
+          <h1 className={`display ${styles.titulo}`}>
+            <TituloRevelado texto={hero.titulo} atraso={0.15} />
+          </h1>
           <p className={`corpo-g ${styles.apoio}`}>{hero.apoio}</p>
           <div className={styles.acoes}>
-            <Botao href={hero.acaoPrincipal.href}>{hero.acaoPrincipal.rotulo}</Botao>
+            <Magnetico>
+              <Botao href={hero.acaoPrincipal.href}>{hero.acaoPrincipal.rotulo}</Botao>
+            </Magnetico>
             <Botao href={hero.acaoSecundaria.href} variante="secundario">
               {hero.acaoSecundaria.rotulo}
             </Botao>
           </div>
         </div>
-        <SimboloEmLinhas />
+        <Paralaxe>
+          <SimboloEmLinhas />
+        </Paralaxe>
       </div>
     </section>
   );

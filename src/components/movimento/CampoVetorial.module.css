@@ -1,0 +1,16 @@
+.campo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* some aos poucos nas bordas de cima e de baixo, sem corte seco */
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 78%, transparent);
+  animation: surge 1200ms ease 200ms both;
+}
+
+@keyframes surge {
+  from {
+    opacity: 0;
+  }
+}

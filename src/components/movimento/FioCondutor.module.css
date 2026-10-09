@@ -1,0 +1,34 @@
+.trilho {
+  position: fixed;
+  top: calc(var(--altura-cabecalho) + 24px);
+  bottom: 24px;
+  left: calc(var(--margem) / 2);
+  z-index: 5;
+  width: 1px;
+  background: var(--linha);
+  pointer-events: none;
+}
+
+.preenchimento {
+  position: absolute;
+  inset: 0;
+  background: var(--acento);
+  transform-origin: top;
+}
+
+.ponta {
+  position: absolute;
+  left: -3px;
+  width: 7px;
+  height: 7px;
+  margin-top: -3px;
+  background: var(--acento);
+  box-shadow: 0 0 14px 2px color-mix(in srgb, var(--acento) 60%, transparent);
+}
+
+/* em telas estreitas a margem é pequena demais para o fio caber */
+@media (max-width: 1099px) {
+  .trilho {
+    display: none;
+  }
+}
