@@ -1,5 +1,7 @@
 // Seção "O que construímos": três cards, um por frente de atuação.
 import { servicos, type IconeServico } from "@/content/site";
+import { CartaoLuz } from "./movimento/CartaoLuz";
+import { Revela } from "./movimento/Revela";
 import styles from "./Servicos.module.css";
 
 // Ícones de traço fino, desenhados à mão em SVG (os mesmos do Figma).
@@ -30,7 +32,7 @@ export function Servicos() {
   return (
     <section id="servicos" className="secao" aria-labelledby="servicos-titulo">
       <div className="container">
-        <header className={styles.topo}>
+        <Revela className={styles.topo}>
           <div className={styles.titulo}>
             <p className="rotulo rotulo-traco">{servicos.rotulo}</p>
             <h2 id="servicos-titulo" className="h1">
@@ -38,11 +40,11 @@ export function Servicos() {
             </h2>
           </div>
           <p className={`corpo-g ${styles.apoio}`}>{servicos.apoio}</p>
-        </header>
+        </Revela>
 
         <ul className={styles.cards}>
-          {servicos.itens.map((item) => (
-            <li key={item.numero} className={`${styles.card} revela`}>
+          {servicos.itens.map((item, i) => (
+            <CartaoLuz key={item.numero} className={styles.card} atraso={i * 0.12}>
               <div className={styles.cardTopo}>
                 <svg
                   className={styles.icone}
@@ -59,7 +61,7 @@ export function Servicos() {
               <span className={styles.acento} aria-hidden="true" />
               <h3 className="h3">{item.titulo}</h3>
               <p className="corpo">{item.texto}</p>
-            </li>
+            </CartaoLuz>
           ))}
         </ul>
       </div>

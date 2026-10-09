@@ -172,30 +172,9 @@ ol {
 }
 
 /* ---------- Movimento ---------- */
-/* .revela: o elemento sobe e aparece conforme entra na tela. É uma animação
-   ligada à rolagem, feita só com CSS. Navegadores sem suporte simplesmente
-   mostram o conteúdo parado. */
-
-@keyframes revela {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .revela {
-      animation: revela linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 45%;
-    }
-  }
-}
+/* As animações de entrada e de rolagem ficam nos componentes de
+   src/components/movimento (biblioteca Motion). Aqui só garantimos que quem
+   pediu "reduzir movimento" no sistema não veja animações em CSS. */
 
 @media (prefers-reduced-motion: reduce) {
   html {

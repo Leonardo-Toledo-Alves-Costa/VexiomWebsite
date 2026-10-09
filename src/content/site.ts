@@ -18,6 +18,18 @@ export const hero = {
   acaoSecundaria: { rotulo: "Ver serviços", href: "#servicos" },
 };
 
+// PROVISÓRIO: lista montada a partir da experiência do time; revisar.
+export const tecnologias = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
+  "Flutter",
+  "Firebase",
+  "Supabase",
+  "MongoDB",
+];
+
 export const axiomas = {
   titulo: "Nossos axiomas",
   apoio: "Os princípios de que partimos em todo projeto.",

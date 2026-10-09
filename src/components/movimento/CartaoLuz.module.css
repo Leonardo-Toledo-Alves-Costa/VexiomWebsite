@@ -1,0 +1,55 @@
+.luz {
+  position: relative;
+  isolation: isolate; /* mantém os pseudo-elementos dentro deste card */
+}
+
+/* clarão suave no fundo, centrado no cursor */
+.luz::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    320px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--acento) 13%, transparent),
+    transparent 70%
+  );
+}
+
+/* borda iluminada: um degradê que só aparece na faixa de 1px da borda.
+   A "mask" recorta o miolo e deixa só o contorno. */
+.luz::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    240px circle at var(--mx, 50%) var(--my, 50%),
+    var(--acento),
+    transparent 70%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+}
+
+.luz::before,
+.luz::after {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+@media (hover: hover) {
+  .luz:hover::before,
+  .luz:hover::after {
+    opacity: 1;
+  }
+}

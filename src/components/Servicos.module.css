@@ -30,9 +30,6 @@
   background: var(--superficie);
   border: 1px solid var(--linha);
   border-radius: var(--raio);
-  transition:
-    border-color 200ms ease,
-    translate 200ms ease;
 }
 
 .cardTopo {
@@ -66,13 +63,9 @@
   transition: width 250ms ease;
 }
 
-/* Hover só em aparelhos com mouse; no toque o efeito ficaria "preso" */
+/* Hover só em aparelhos com mouse; no toque o efeito ficaria "preso".
+   O brilho e a subida do card vêm do componente CartaoLuz. */
 @media (hover: hover) {
-  .card:hover {
-    border-color: color-mix(in srgb, var(--acento) 55%, var(--linha));
-    translate: 0 -4px;
-  }
-
   .card:hover .acento {
     width: 64px;
   }

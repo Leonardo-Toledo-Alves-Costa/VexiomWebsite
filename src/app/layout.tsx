@@ -2,6 +2,7 @@
 // globais e os dados de SEO (título e descrição que o Google mostra).
 import type { Metadata } from "next";
 import { Montserrat, Red_Hat_Display } from "next/font/google";
+import { Movimento } from "@/components/movimento/Movimento";
 import "./globals.css";
 
 // next/font baixa as fontes no build e as serve do nosso próprio domínio.
@@ -27,7 +28,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="pt-BR" className={`${fonteTitulo.variable} ${fonteTexto.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Movimento>{children}</Movimento>
+      </body>
     </html>
   );
 }
