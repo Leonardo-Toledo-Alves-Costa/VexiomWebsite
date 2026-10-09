@@ -1,0 +1,263 @@
+/* As medidas internas usam "cqw": 1cqw = 1% da largura do contêiner (a tela
+   da maquete). Assim a maquete inteira encolhe ou cresce em proporção. */
+
+.navegador,
+.celular {
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.6);
+}
+
+.navegador {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.barra {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--linha);
+}
+
+.barra span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--linha);
+}
+
+.barra span:first-child {
+  background: var(--acento);
+}
+
+.barra i {
+  flex: 1;
+  max-width: 46%;
+  height: 14px;
+  margin-left: 10px;
+  border-radius: 7px;
+  background: var(--fundo);
+}
+
+.tela {
+  container-type: inline-size;
+  aspect-ratio: 16 / 10;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2cqw;
+  padding: 4cqw;
+  background: var(--fundo);
+}
+
+/* ---------- blocos ---------- */
+
+.b {
+  height: 2.2cqw;
+  border-radius: 0.6cqw;
+  background: color-mix(in srgb, var(--texto) 10%, transparent);
+}
+
+.forte {
+  background: color-mix(in srgb, var(--texto) 30%, transparent);
+}
+
+.acento {
+  background: var(--acento);
+}
+
+.alto {
+  height: 4.4cqw;
+}
+
+.fino {
+  height: 1.6cqw;
+}
+
+.botao {
+  width: 26%;
+  height: 5cqw;
+  margin-top: 1.4cqw;
+}
+
+.imagem {
+  height: 100%;
+  min-height: 22cqw;
+}
+
+.cartao {
+  height: 11cqw;
+}
+
+.baixo {
+  height: 7cqw;
+}
+
+.faixa {
+  height: 13cqw;
+}
+
+.bolinha {
+  flex: none;
+  width: 9cqw;
+  height: 9cqw;
+  border-radius: 50%;
+}
+
+.destaque {
+  height: 34cqw;
+  border-radius: 3cqw;
+}
+
+.espaco {
+  flex: 1;
+}
+
+/* ---------- arranjos ---------- */
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 2.4cqw;
+}
+
+.menu .b {
+  height: 2cqw;
+}
+
+.menu .acento {
+  height: 3.6cqw;
+}
+
+.pilha {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.8cqw;
+  flex: 1;
+  min-width: 0;
+}
+
+.duas,
+.tres,
+.quatro {
+  display: grid;
+  gap: 2.6cqw;
+}
+
+.duas {
+  grid-template-columns: 1.1fr 1fr;
+  flex: 1;
+}
+
+.tres {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.quatro {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* painel de gestão */
+.painel {
+  display: grid;
+  grid-template-columns: 22% 1fr;
+  gap: 3.2cqw;
+  flex: 1;
+}
+
+.lateral,
+.principal {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4cqw;
+}
+
+.lateral {
+  padding-right: 3.2cqw;
+  border-right: 1px solid var(--linha);
+}
+
+.lateral .b {
+  height: 3cqw;
+}
+
+.grafico {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 2.4cqw;
+  padding: 2.4cqw;
+  border: 1px solid var(--linha);
+  border-radius: 1cqw;
+}
+
+.colunaGrafico {
+  flex: 1;
+  border-radius: 0.6cqw 0.6cqw 0 0;
+  background: color-mix(in srgb, var(--texto) 22%, transparent);
+  transform-origin: bottom;
+}
+
+.colunaGrafico.acento {
+  background: var(--acento);
+}
+
+/* celular */
+.celular {
+  width: min(46%, 250px);
+  margin-inline: auto;
+  padding: 8px;
+  border-radius: 28px;
+}
+
+.telaCelular {
+  container-type: inline-size;
+  aspect-ratio: 9 / 18.5;
+  display: flex;
+  flex-direction: column;
+  gap: 5cqw;
+  padding: 8cqw 6cqw 6cqw;
+  border-radius: 20px;
+  background: var(--fundo);
+}
+
+.telaCelular .b {
+  height: 5cqw;
+  border-radius: 1.4cqw;
+}
+
+.telaCelular .fino {
+  height: 3.4cqw;
+}
+
+.telaCelular .bolinha {
+  width: 11cqw;
+  height: 11cqw;
+  border-radius: 50%;
+}
+
+.telaCelular .destaque {
+  height: 44cqw;
+  border-radius: 5cqw;
+}
+
+.itemLista {
+  display: flex;
+  align-items: center;
+  gap: 4cqw;
+}
+
+.abas {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 5cqw;
+  border-top: 1px solid var(--linha);
+}
+
+.abas .bolinha {
+  width: 8cqw;
+  height: 8cqw;
+}

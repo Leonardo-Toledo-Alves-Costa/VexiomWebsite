@@ -8,7 +8,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 20px 32px;
 }
 
 .marca {
@@ -37,7 +38,7 @@
   color: var(--texto);
 }
 
-@media (max-width: 699px) {
+@media (max-width: 1099px) {
   .conteudo,
   .marca {
     flex-direction: column;

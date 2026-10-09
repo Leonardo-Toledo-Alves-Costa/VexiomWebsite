@@ -17,8 +17,13 @@
     transform 150ms ease;
 }
 
+/* encolher um pouco ao pressionar faz o botão parecer "responder" ao toque */
 .botao:active {
-  transform: translateY(1px);
+  transform: scale(0.97);
+}
+
+.total {
+  width: 100%;
 }
 
 .primario {

@@ -6,11 +6,15 @@ type Props = {
   href: string;
   children: React.ReactNode;
   variante?: "primario" | "secundario" | "cta";
+  larguraTotal?: boolean;
+  // opcional: algo a fazer no clique, antes de o link levar ao destino
+  onClick?: () => void;
 };
 
-export function Botao({ href, children, variante = "primario" }: Props) {
+export function Botao({ href, children, variante = "primario", larguraTotal, onClick }: Props) {
+  const classes = [styles.botao, styles[variante], larguraTotal ? styles.total : ""].join(" ");
   return (
-    <a href={href} className={`${styles.botao} ${styles[variante]}`}>
+    <a href={href} className={classes} onClick={onClick}>
       {children}
     </a>
   );

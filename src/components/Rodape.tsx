@@ -1,5 +1,5 @@
-// Rodapé: símbolo, direitos e os mesmos links da navegação.
-import { navegacao, rodape } from "@/content/site";
+// Rodapé: símbolo, direitos, navegação e os canais de contato.
+import { contato, navegacao, rodape } from "@/content/site";
 import { Simbolo } from "./Logo";
 import styles from "./Rodape.module.css";
 
@@ -11,6 +11,7 @@ export function Rodape() {
           <Simbolo className={styles.simbolo} />
           <p>{rodape.direitos}</p>
         </div>
+
         <nav aria-label="Rodapé">
           <ul className={styles.links}>
             {navegacao.map((item) => (
@@ -20,6 +21,19 @@ export function Rodape() {
             ))}
           </ul>
         </nav>
+
+        <ul className={styles.links} aria-label="Canais de contato">
+          <li>
+            <a href={`mailto:${contato.email}`}>{contato.email}</a>
+          </li>
+          {contato.redes.map((rede) => (
+            <li key={rede.nome}>
+              <a href={rede.href} target="_blank" rel="noopener noreferrer">
+                {rede.nome}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </footer>
   );
