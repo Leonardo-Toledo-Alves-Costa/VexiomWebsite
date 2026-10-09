@@ -4,7 +4,8 @@
 
 export const navegacao = [
   { rotulo: "Serviços", href: "#servicos" },
-  { rotulo: "Como funciona", href: "#como-funciona" },
+  { rotulo: "Projetos", href: "#projetos" },
+  { rotulo: "Planos", href: "#planos" },
   { rotulo: "Quem somos", href: "#quem-somos" },
   { rotulo: "Contato", href: "#contato" },
 ];
@@ -125,11 +126,129 @@ export const quemSomos = {
   ],
 };
 
-export const chamadaFinal = {
-  titulo: "Tem um projeto em mente?",
-  texto: "Conte a ideia. A gente responde com um caminho claro para tirá-la do papel.",
-  // PROVISÓRIO: falta o canal real de contato (WhatsApp, e-mail ou formulário).
-  acao: { rotulo: "Fale com a gente", href: "#contato" },
+export type TipoMaquete = "landing" | "institucional" | "painel" | "app";
+
+// Modelos de projeto: exemplos do que o cliente pode receber. Não são
+// trabalhos de clientes; a seção deixa isso claro no texto de apoio.
+export const projetos = {
+  rotulo: "Projetos",
+  titulo: "O que você pode receber",
+  apoio:
+    "Quatro modelos para dar uma ideia do resultado. São demonstrações de formato: o seu projeto é desenhado para o seu negócio.",
+  itens: [
+    {
+      id: "landing",
+      maquete: "landing" as TipoMaquete,
+      titulo: "Landing page",
+      tipo: "Site de uma página",
+      texto:
+        "Uma página direta para apresentar um produto ou serviço e transformar visitas em contatos.",
+      tags: ["Design sob medida", "Formulário de contato", "SEO"],
+      plano: "presenca",
+    },
+    {
+      id: "institucional",
+      maquete: "institucional" as TipoMaquete,
+      titulo: "Site institucional",
+      tipo: "Site com várias páginas",
+      texto:
+        "A casa da sua empresa na internet: quem vocês são, o que fazem e como falar com vocês.",
+      tags: ["Várias páginas", "Conteúdo editável", "Blog ou catálogo"],
+      plano: "negocio",
+    },
+    {
+      id: "painel",
+      maquete: "painel" as TipoMaquete,
+      titulo: "Painel de gestão",
+      tipo: "Sistema web",
+      texto:
+        "Um sistema com login, cadastros e gráficos para organizar a operação do seu negócio num lugar só.",
+      tags: ["Login e permissões", "Banco de dados", "Relatórios"],
+      plano: "sob-medida",
+    },
+    {
+      id: "app",
+      maquete: "app" as TipoMaquete,
+      titulo: "Aplicativo mobile",
+      tipo: "App para Android e iOS",
+      texto:
+        "O seu serviço no bolso do cliente, com uma única base de código para as duas lojas.",
+      tags: ["Android e iOS", "Notificações", "Publicação nas lojas"],
+      plano: "sob-medida",
+    },
+  ],
+  acao: "Quero um assim",
+};
+
+export const planos = {
+  rotulo: "Planos",
+  titulo: "Um ponto de partida para o seu orçamento",
+  apoio:
+    "Três formatos para começar a conversa. Todo plano pode ser ajustado ao que você precisa.",
+  // PROVISÓRIO: preco: null mostra "Valor a definir". Trocar pelos valores
+  // reais, por exemplo preco: "R$ 1.500".
+  itens: [
+    {
+      id: "presenca",
+      nome: "Presença",
+      paraQuem: "Para estar online com cara profissional.",
+      preco: null as string | null,
+      itens: [
+        "Site de uma página (landing page)",
+        "Design sob medida com a sua marca",
+        "Funciona bem no celular e no computador",
+        "Botão ou formulário de contato",
+        "Publicação no seu domínio",
+      ],
+      destaque: false,
+    },
+    {
+      id: "negocio",
+      nome: "Negócio",
+      paraQuem: "Para a empresa que quer um site completo.",
+      preco: null as string | null,
+      itens: [
+        "Tudo do plano Presença",
+        "Várias páginas: início, serviços, sobre, contato",
+        "Blog ou catálogo de produtos",
+        "Conteúdo que você mesmo edita",
+        "Integração com WhatsApp e redes sociais",
+      ],
+      destaque: true,
+    },
+    {
+      id: "sob-medida",
+      nome: "Sob medida",
+      paraQuem: "Para sistemas web e aplicativos.",
+      preco: "Sob consulta" as string | null,
+      itens: [
+        "Levantamento do que o seu negócio precisa",
+        "Sistema web ou aplicativo mobile",
+        "Login, banco de dados e painel administrativo",
+        "Entregas parciais para você acompanhar",
+        "Orçamento fechado antes de começar",
+      ],
+      destaque: false,
+    },
+  ],
+  acao: "Escolher este plano",
+  seloDestaque: "Recomendado",
+  precoIndefinido: "Valor a definir",
+};
+
+export const contato = {
+  rotulo: "Contato",
+  titulo: "Bora tirar a sua ideia do papel?",
+  // {plano} é trocado pelo nome do plano que o visitante escolheu
+  tituloComPlano: "Boa escolha. Vamos falar do plano {plano}?",
+  texto:
+    "Mande um e-mail contando o que você precisa. A gente responde com um caminho claro e um orçamento.",
+  email: "vexiom.dev@gmail.com",
+  acao: "Enviar e-mail",
+  redes: [
+    { nome: "Instagram", usuario: "@vexiomdev", href: "https://instagram.com/vexiomdev" },
+    { nome: "X (Twitter)", usuario: "@vexiomdev", href: "https://x.com/vexiomdev" },
+  ],
 };
 
 export const rodape = {

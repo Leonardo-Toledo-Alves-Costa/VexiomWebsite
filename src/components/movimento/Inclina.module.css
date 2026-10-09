@@ -1,0 +1,25 @@
+/* perspective no pai é o que dá profundidade à rotação do filho */
+.palco {
+  perspective: 1100px;
+}
+
+.peca {
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.reflexo {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .palco:hover .reflexo {
+    opacity: 1;
+  }
+}

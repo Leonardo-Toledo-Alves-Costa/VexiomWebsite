@@ -1,0 +1,111 @@
+.topo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: clamp(28px, 4vw, 56px);
+}
+
+.apoio {
+  max-width: 34rem;
+}
+
+.lista {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: 24px;
+}
+
+.plano {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: clamp(24px, 2.5vw, 36px);
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+}
+
+/* o plano recomendado ganha borda laranja; o escolhido também */
+.destaque,
+.escolhido {
+  border-color: var(--acento);
+}
+
+.selo {
+  position: absolute;
+  top: -1px;
+  right: 24px;
+  padding: 6px 10px;
+  background: var(--acento);
+  color: var(--sobre-acento);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cabeca {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preco {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-block: 20px;
+  border-block: 1px solid var(--linha);
+}
+
+.preco small {
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+}
+
+.preco strong {
+  font-family: var(--fonte-titulo), system-ui, sans-serif;
+  font-size: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.semPreco {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--acento-texto);
+}
+
+.itens {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1; /* empurra o botão para o pé do card */
+  font-size: 0.9375rem;
+  color: var(--texto-suave);
+}
+
+/* marcador: o quadradinho laranja da marca no lugar da bolinha padrão */
+.itens li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.itens li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  background: var(--acento);
+}
+
+@media (max-width: 899px) {
+  .lista {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
