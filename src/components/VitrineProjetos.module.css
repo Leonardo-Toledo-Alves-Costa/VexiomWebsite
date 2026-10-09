@@ -158,9 +158,10 @@
   }
 
   /* no celular a maquete vem antes da lista */
+  /* altura fixa pelo maior caso (o celular), para a lista não pular
+     quando a maquete troca de formato */
   .palco {
     order: -1;
-    min-height: 0;
-    aspect-ratio: 16 / 11.5;
+    min-height: min(64vw, 330px);
   }
 }

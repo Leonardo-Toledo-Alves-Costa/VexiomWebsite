@@ -25,11 +25,11 @@ export default function Home() {
         <Hero />
         <Faixa />
         <Axiomas />
+        <QuemSomos />
         <Servicos />
         <Projetos />
         <ComoFunciona />
         <Planos />
-        <QuemSomos />
         <Contato />
       </main>
       <Rodape />

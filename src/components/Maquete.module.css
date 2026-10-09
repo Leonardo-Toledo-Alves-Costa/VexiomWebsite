@@ -1,5 +1,8 @@
-/* As medidas internas usam "cqw": 1cqw = 1% da largura do contêiner (a tela
-   da maquete). Assim a maquete inteira encolhe ou cresce em proporção. */
+/* As medidas internas usam "cqw": 1cqw = 1% da largura do contêiner (a
+   moldura da maquete). Assim a maquete inteira encolhe ou cresce em proporção.
+   Atenção: o contêiner (container-type) fica na MOLDURA, não na tela. Um
+   elemento não pode usar cqw em relação a si mesmo; se tentar, a unidade cai
+   para a largura da janela e os espaçamentos ficam gigantes. */
 
 .navegador,
 .celular {
@@ -9,6 +12,7 @@
 }
 
 .navegador {
+  container-type: inline-size;
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
@@ -43,7 +47,6 @@
 }
 
 .tela {
-  container-type: inline-size;
   aspect-ratio: 16 / 10;
   display: flex;
   flex-direction: column;
@@ -206,16 +209,20 @@
 }
 
 /* celular */
+/* O celular é dimensionado pela ALTURA, não pela largura: assim ele nunca
+   fica mais alto que o palco da vitrine. A largura é metade da altura. */
 .celular {
-  width: min(46%, 250px);
+  container-type: inline-size;
+  --altura: clamp(250px, 33vw, 420px);
+  height: var(--altura);
+  width: calc(var(--altura) / 2);
   margin-inline: auto;
-  padding: 8px;
-  border-radius: 28px;
+  padding: 7px;
+  border-radius: 26px;
 }
 
 .telaCelular {
-  container-type: inline-size;
-  aspect-ratio: 9 / 18.5;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 5cqw;
@@ -260,4 +267,17 @@
 .abas .bolinha {
   width: 8cqw;
   height: 8cqw;
+}
+
+/* Em telas estreitas o palco é baixo; o celular acompanha. */
+@media (max-width: 899px) {
+  .celular {
+    --altura: min(58vw, 300px);
+    padding: 5px;
+    border-radius: 20px;
+  }
+
+  .telaCelular {
+    border-radius: 15px;
+  }
 }
