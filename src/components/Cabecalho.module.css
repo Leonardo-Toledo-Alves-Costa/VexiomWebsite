@@ -1,0 +1,57 @@
+.cabecalho {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: var(--altura-cabecalho);
+  border-bottom: 1px solid var(--linha);
+  /* fundo quase opaco + desfoque: o conteúdo passa por baixo sem atrapalhar */
+  background: color-mix(in srgb, var(--fundo) 86%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.conteudo {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  display: block;
+  color: var(--texto);
+}
+
+.logo svg {
+  display: block;
+  height: 32px;
+  width: auto;
+}
+
+.nav ul {
+  display: flex;
+  gap: clamp(20px, 3vw, 40px);
+}
+
+.nav a {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+  transition: color 150ms ease;
+}
+
+.nav a:hover {
+  color: var(--texto);
+}
+
+/* Abaixo de 900px a navegação e o botão somem e entra o menu mobile */
+@media (max-width: 899px) {
+  .nav,
+  .acao {
+    display: none;
+  }
+
+  .logo svg {
+    height: 26px;
+  }
+}

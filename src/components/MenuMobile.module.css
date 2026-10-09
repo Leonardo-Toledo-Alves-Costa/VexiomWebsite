@@ -1,0 +1,83 @@
+.menu {
+  display: none;
+}
+
+@media (max-width: 899px) {
+  .menu {
+    display: block;
+  }
+}
+
+.botao {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -8px;
+  border: 0;
+  background: none;
+  color: var(--texto);
+  cursor: pointer;
+}
+
+/* As duas linhas do ícone são o ::before e o ::after deste span.
+   Quando o menu abre, elas giram e formam um X. */
+.linhas {
+  position: relative;
+  width: 24px;
+  height: 10px;
+}
+
+.linhas::before,
+.linhas::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transition: transform 200ms ease;
+}
+
+.linhas::before {
+  top: 0;
+}
+
+.linhas::after {
+  bottom: 0;
+}
+
+.linhas[data-aberto="true"]::before {
+  transform: translateY(4.25px) rotate(45deg);
+}
+
+.linhas[data-aberto="true"]::after {
+  transform: translateY(-4.25px) rotate(-45deg);
+}
+
+.painel {
+  position: absolute;
+  top: var(--altura-cabecalho);
+  left: 0;
+  right: 0;
+  padding: 8px var(--margem) 24px;
+  background: var(--fundo);
+  border-bottom: 1px solid var(--linha);
+  animation: desce 200ms ease both;
+}
+
+.painel a {
+  display: block;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--linha);
+  font-family: var(--fonte-titulo), system-ui, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+@keyframes desce {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
