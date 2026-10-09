@@ -1,0 +1,45 @@
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(28px, 4vw, 56px);
+}
+
+.titulo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.passos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
+  border: 1px solid var(--linha);
+}
+
+.passo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(28px, 3vw, 40px) clamp(24px, 2.5vw, 32px);
+}
+
+.passo + .passo {
+  border-left: 1px solid var(--linha);
+}
+
+.numero {
+  color: var(--acento-texto);
+}
+
+@media (max-width: 899px) {
+  .passos {
+    grid-template-columns: 1fr;
+  }
+
+  .passo + .passo {
+    border-left: 0;
+    border-top: 1px solid var(--linha);
+  }
+}

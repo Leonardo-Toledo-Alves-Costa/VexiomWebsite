@@ -1,40 +1,78 @@
+/* Estilos globais: variáveis de tema, reset e tipografia.
+   Tudo que é cor passa por uma variável, então trocar de tema é só trocar valores. */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Tema escuro (padrão) */
+  --fundo: #141414;
+  --superficie: #1e1e1e;
+  --linha: #2e2e2e;
+  --texto: #f5f2ec;
+  --texto-suave: #b8b4ac;
+  --acento: #f26b1d;
+  --acento-claro: #ff8a47;
+  --acento-texto: #f26b1d;
+  --sobre-acento: #141414;
+  --azul: #24456f;
+
+  --cta-fundo: #1d3a5f;
+  --cta-listra: #24456f;
+  --cta-texto: #f5f2ec;
+  --cta-botao-fundo: #f26b1d;
+  --cta-botao-texto: #141414;
+
+  /* Medidas */
+  --margem: clamp(20px, 5.5vw, 80px);
+  --largura: 1280px;
+  --raio: 4px;
+  --altura-cabecalho: 76px;
+  --espaco-secao: clamp(64px, 9vw, 112px);
+
+  color-scheme: dark;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Tema claro: ainda sem botão para alternar. Para testar, coloque
+   data-theme="light" na tag <html> em src/app/layout.tsx. */
+[data-theme="light"] {
+  --fundo: #ffffff;
+  --superficie: #f5f2ec;
+  --linha: #e9e4da;
+  --texto: #141414;
+  --texto-suave: #5c5953;
+  /* o laranja da marca tem pouco contraste em texto pequeno sobre branco */
+  --acento-texto: #c9530f;
+
+  --cta-fundo: #f26b1d;
+  --cta-listra: #ff8a47;
+  --cta-texto: #141414;
+  --cta-botao-fundo: #141414;
+  --cta-botao-texto: #f5f2ec;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+  scroll-behavior: smooth;
+  /* âncoras (#servicos) param abaixo do cabeçalho fixo, não atrás dele */
+  scroll-padding-top: var(--altura-cabecalho);
 }
 
 body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte-texto), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+  overflow-x: hidden;
 }
 
 a {
@@ -42,8 +80,132 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+ul,
+ol {
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--acento);
+  outline-offset: 3px;
+}
+
+/* ---------- Tipografia (mesma escala do guia de estilo no Figma) ---------- */
+/* clamp(mínimo, ideal, máximo): o tamanho cresce com a tela entre o valor
+   mobile e o desktop, sem precisar de media query. */
+
+.display,
+.h1,
+.h2,
+.h3 {
+  font-family: var(--fonte-titulo), system-ui, sans-serif;
+  text-wrap: balance;
+}
+
+.display {
+  font-size: clamp(2.5rem, 1.6rem + 4.2vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.h1 {
+  font-size: clamp(2rem, 1.55rem + 2vw, 3rem);
+  line-height: 1.17;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.h2 {
+  font-size: clamp(1.5rem, 1.3rem + 0.9vw, 2rem);
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.h3 {
+  font-size: clamp(1.25rem, 1.2rem + 0.25vw, 1.375rem);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.corpo-g {
+  font-size: clamp(1.0625rem, 1.03rem + 0.15vw, 1.125rem);
+  line-height: 1.65;
+  color: var(--texto-suave);
+}
+
+.corpo {
+  color: var(--texto-suave);
+}
+
+.rotulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--acento-texto);
+}
+
+/* o tracinho laranja antes dos rótulos de seção */
+.rotulo-traco::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--acento);
+  flex: none;
+}
+
+/* ---------- Layout ---------- */
+
+.container {
+  width: min(100% - 2 * var(--margem), var(--largura));
+  margin-inline: auto;
+}
+
+.secao {
+  padding-block: var(--espaco-secao);
+  border-top: 1px solid var(--linha);
+}
+
+/* ---------- Movimento ---------- */
+/* .revela: o elemento sobe e aparece conforme entra na tela. É uma animação
+   ligada à rolagem, feita só com CSS. Navegadores sem suporte simplesmente
+   mostram o conteúdo parado. */
+
+@keyframes revela {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .revela {
+      animation: revela linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   html {
-    color-scheme: dark;
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }

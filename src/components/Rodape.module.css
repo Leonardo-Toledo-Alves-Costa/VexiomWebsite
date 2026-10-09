@@ -1,0 +1,46 @@
+.rodape {
+  padding-block: 36px;
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+}
+
+.conteudo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.simbolo {
+  height: 28px;
+  width: auto;
+  color: var(--texto);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+}
+
+.links a {
+  transition: color 150ms ease;
+}
+
+.links a:hover {
+  color: var(--texto);
+}
+
+@media (max-width: 699px) {
+  .conteudo,
+  .marca {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

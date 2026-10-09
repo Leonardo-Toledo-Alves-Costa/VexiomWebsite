@@ -1,0 +1,36 @@
+.axiomas {
+  border-block: 1px solid var(--linha);
+}
+
+.faixa {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-inline: 1px solid var(--linha);
+}
+
+.celula {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 40px 32px;
+}
+
+.celula + .celula {
+  border-left: 1px solid var(--linha);
+}
+
+@media (max-width: 899px) {
+  .faixa {
+    grid-template-columns: 1fr;
+    border-inline: 0;
+  }
+
+  .celula {
+    padding: 28px 0;
+  }
+
+  .celula + .celula {
+    border-left: 0;
+    border-top: 1px solid var(--linha);
+  }
+}
