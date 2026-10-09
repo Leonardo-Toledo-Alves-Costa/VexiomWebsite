@@ -1,0 +1,167 @@
+.vitrine {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+}
+
+/* ---------- lista ---------- */
+
+.lista {
+  border-top: 1px solid var(--linha);
+}
+
+.item {
+  position: relative;
+  border-bottom: 1px solid var(--linha);
+}
+
+.cabeca {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 16px;
+  width: 100%;
+  padding: 22px 0;
+  border: 0;
+  background: none;
+  color: var(--texto-suave);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: color 150ms ease;
+}
+
+.numero {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--acento-texto);
+}
+
+.titulo {
+  transition: translate 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.tipo {
+  font-size: 0.8125rem;
+}
+
+.aberto .cabeca {
+  color: var(--texto);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cabeca:hover {
+    color: var(--texto);
+  }
+
+  .cabeca:hover .titulo {
+    translate: 6px 0;
+  }
+}
+
+/* Abrir e fechar sem medir altura em JavaScript: uma grade de uma linha que
+   vai de 0fr (fechada) a 1fr (altura do conteúdo). */
+.detalhe {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 350ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.aberto .detalhe {
+  grid-template-rows: 1fr;
+}
+
+.miolo {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow: hidden;
+  /* escondido de verdade quando fechado: nem o Tab chega no botão de dentro */
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 250ms ease,
+    visibility 0s linear 350ms;
+}
+
+.aberto .miolo {
+  visibility: visible;
+  opacity: 1;
+  padding-bottom: 26px;
+  transition:
+    opacity 300ms ease 100ms,
+    visibility 0s;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tags li {
+  padding: 5px 10px;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+
+/* barra de tempo do avanço automático */
+.tempo {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: var(--acento);
+  transform-origin: left;
+  animation: enche 6500ms linear both;
+}
+
+@keyframes enche {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+/* ---------- palco ---------- */
+
+.palco {
+  /* altura mínima fixa: a troca entre navegador e celular não empurra a página */
+  display: grid;
+  align-items: center;
+  min-height: clamp(280px, 38vw, 470px);
+}
+
+.maquete {
+  width: 100%;
+}
+
+@media (max-width: 899px) {
+  .vitrine {
+    grid-template-columns: 1fr;
+  }
+
+  /* no celular o tipo desce para baixo do título, em vez de espremê-lo */
+  .cabeca {
+    grid-template-columns: auto 1fr;
+    row-gap: 4px;
+    padding: 18px 0;
+  }
+
+  .tipo {
+    grid-column: 2;
+  }
+
+  /* no celular a maquete vem antes da lista */
+  /* altura fixa pelo maior caso (o celular), para a lista não pular
+     quando a maquete troca de formato */
+  .palco {
+    order: -1;
+    min-height: min(64vw, 330px);
+  }
+}

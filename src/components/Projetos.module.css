@@ -1,0 +1,25 @@
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  margin-bottom: clamp(28px, 4vw, 56px);
+}
+
+.titulo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.apoio {
+  max-width: 30rem;
+}
+
+@media (max-width: 899px) {
+  .topo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}

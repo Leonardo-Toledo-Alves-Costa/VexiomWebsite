@@ -1,0 +1,162 @@
+.hero {
+  position: relative; /* referência para o canvas do campo vetorial */
+  overflow: hidden;
+  padding-block: clamp(56px, 9vw, 120px);
+}
+
+/* Duas colunas no desktop; no celular vira uma coluna só (ver media query) */
+.conteudo {
+  position: relative; /* fica acima do campo vetorial */
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(40px, 5vw, 80px);
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(24px, 2.5vw, 32px);
+}
+
+.apoio {
+  max-width: 34rem;
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ---------- Símbolo em linhas ---------- */
+
+.grafico {
+  width: 100%;
+  height: auto;
+  color: var(--texto);
+}
+
+.construcao {
+  /* azul da marca clareado: puro, ele some sobre o grafite */
+  stroke: color-mix(in srgb, var(--azul) 70%, var(--texto));
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+  /* o traço não engrossa junto com o scale() do símbolo */
+  vector-effect: non-scaling-stroke;
+}
+
+.construcao * {
+  vector-effect: non-scaling-stroke;
+}
+
+.simbolo {
+  stroke: currentColor;
+  stroke-width: 1.2;
+  fill: currentColor;
+  fill-opacity: 0.04;
+}
+
+.pingo {
+  fill: var(--acento);
+}
+
+/* Animação de entrada: a grade aparece, as barras se desenham e o pingo
+   laranja entra por último. stroke-dasharray/dashoffset é o truque clássico:
+   um traço do tamanho do contorno inteiro que "desliza" até cobrir tudo. */
+@media (prefers-reduced-motion: no-preference) {
+  .construcao {
+    animation: aparece 900ms ease 500ms both;
+  }
+
+  .simbolo > * {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: desenha 1400ms cubic-bezier(0.65, 0, 0.35, 1) 300ms forwards;
+  }
+
+  .simbolo > *:nth-child(2) {
+    animation-delay: 420ms;
+  }
+
+  .simbolo > *:nth-child(3) {
+    animation-delay: 540ms;
+  }
+
+  .simbolo > *:nth-child(4) {
+    animation-delay: 660ms;
+  }
+
+  .simbolo > *:nth-child(5) {
+    animation-delay: 780ms;
+  }
+
+  .simbolo {
+    animation: preenche 600ms ease 1500ms both;
+  }
+
+  .pingo {
+    transform-box: fill-box;
+    transform-origin: bottom;
+    animation: cresce 500ms cubic-bezier(0.2, 0.8, 0.2, 1) 1500ms both;
+  }
+
+  .texto > * {
+    animation: sobe 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  /* o título tem a própria animação, palavra por palavra (TituloRevelado) */
+  .texto > .titulo {
+    animation: none;
+  }
+
+  .texto > *:nth-child(3) {
+    animation-delay: 550ms;
+  }
+
+  .texto > *:nth-child(4) {
+    animation-delay: 680ms;
+  }
+}
+
+@keyframes aparece {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes desenha {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes preenche {
+  from {
+    fill-opacity: 0;
+  }
+}
+
+@keyframes cresce {
+  from {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes sobe {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@media (max-width: 899px) {
+  .conteudo {
+    grid-template-columns: 1fr;
+  }
+
+  .grafico {
+    max-width: 480px;
+  }
+}

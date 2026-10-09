@@ -1,0 +1,57 @@
+.conteudo {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: center;
+  gap: clamp(32px, 5vw, 64px);
+}
+
+.texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.equipe {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.pessoa {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+}
+
+.foto {
+  width: 72px;
+  height: 72px;
+  margin-bottom: 4px;
+  color: var(--texto);
+}
+
+.fotoBorda {
+  stroke: var(--linha);
+}
+
+.fotoPingo {
+  fill: var(--acento);
+}
+
+@media (max-width: 1099px) {
+  .conteudo {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 699px) {
+  .equipe {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

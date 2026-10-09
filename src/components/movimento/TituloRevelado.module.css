@@ -1,0 +1,23 @@
+.janela {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  white-space: pre;
+  /* folga para não cortar a perna de letras como "ç" e "g" */
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+
+.palavra {
+  display: inline-block;
+}
+
+/* visível só para leitores de tela */
+.leitor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

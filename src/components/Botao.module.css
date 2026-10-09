@@ -1,0 +1,56 @@
+.botao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px; /* área de toque confortável no celular */
+  padding: 0 24px;
+  border: 1px solid transparent;
+  border-radius: var(--raio);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+/* encolher um pouco ao pressionar faz o botão parecer "responder" ao toque */
+.botao:active {
+  transform: scale(0.97);
+}
+
+.total {
+  width: 100%;
+}
+
+.primario {
+  background: var(--acento);
+  color: var(--sobre-acento);
+}
+
+.primario:hover {
+  background: var(--acento-claro);
+}
+
+.secundario {
+  border-color: var(--texto);
+  color: var(--texto);
+}
+
+.secundario:hover {
+  border-color: var(--acento);
+  color: var(--acento-texto);
+}
+
+/* botão da chamada final: muda de cor conforme o tema */
+.cta {
+  background: var(--cta-botao-fundo);
+  color: var(--cta-botao-texto);
+}
+
+.cta:hover {
+  filter: brightness(1.12);
+}

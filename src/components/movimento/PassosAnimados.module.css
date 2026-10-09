@@ -1,0 +1,69 @@
+.bloco {
+  position: relative;
+  width: 100%;
+}
+
+.passos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border: 1px solid var(--linha);
+}
+
+.passo {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: clamp(28px, 3vw, 40px) clamp(24px, 2.5vw, 32px);
+}
+
+.passo + .passo {
+  border-left: 1px solid var(--linha);
+}
+
+.numero {
+  color: var(--acento-texto);
+}
+
+.linhaHorizontal,
+.linhaVertical {
+  position: absolute;
+  z-index: 1;
+  background: var(--acento);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--acento) 55%, transparent);
+}
+
+.linhaHorizontal {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform-origin: left;
+}
+
+.linhaVertical {
+  display: none;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  transform-origin: top;
+}
+
+@media (max-width: 899px) {
+  .passos {
+    grid-template-columns: 1fr;
+  }
+
+  .passo + .passo {
+    border-left: 0;
+    border-top: 1px solid var(--linha);
+  }
+
+  .linhaHorizontal {
+    display: none;
+  }
+
+  .linhaVertical {
+    display: block;
+  }
+}
